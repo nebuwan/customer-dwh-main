@@ -37,3 +37,4 @@ CREATE TABLE dbo.error_log (
     error_message NVARCHAR(4000) NOT NULL,
     log_timestamp DATETIME DEFAULT GETDATE()
 );
+GO
