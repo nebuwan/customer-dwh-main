@@ -1,1 +1,1 @@
-Repo Credit: https://www.datawithbaraa.com/sql-introduction/advanced-sql-project/
+Learning Reources and Credit: https://www.datawithbaraa.com/sql-introduction/advanced-sql-project/
