@@ -28,18 +28,6 @@ IF OBJECT_ID('dbo.error_log', 'U') IS NOT NULL
 GO
 
 CREATE TABLE dbo.error_log (
-    log_id           INT IDENTITY(1,1) PRIMARY KEY,
-    log_date         DATETIME DEFAULT GETDATE(),
-    procedure_name   SYSNAME,
-    error_number     INT,
-    error_severity   INT,
-    error_state      INT,
-    error_line       INT,
-    error_message    NVARCHAR(4000)
-);
-
-
-CREATE TABLE dbo.error_log (
     id INT IDENTITY(1,1) PRIMARY KEY,
     procedure_name SYSNAME NOT NULL,
     error_number INT NOT NULL,
