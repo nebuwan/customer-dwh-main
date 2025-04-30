@@ -54,7 +54,7 @@ BEGIN
                    ROW_NUMBER() OVER (PARTITION BY cst_id ORDER BY cst_create_date DESC) AS flag_last
             FROM bronze.crm_cust_info
             WHERE cst_id IS NOT NULL
-        ) t
+        ) AS latest_cst_create_date
         WHERE flag_last = 1;
 
         -- Load silver.crm_prd_info
