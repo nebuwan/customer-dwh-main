@@ -17,6 +17,8 @@ Usage Example:
     EXEC Silver.load_silver;
 ===============================================================================
 */
+USE DataWarehouse;
+GO
 
 CREATE OR ALTER PROCEDURE silver.load_silver AS
 BEGIN

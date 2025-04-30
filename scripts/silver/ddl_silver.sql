@@ -9,6 +9,9 @@ Script Purpose:
 ===============================================================================
 */
 
+USE DataWarehouse;
+GO
+
 IF OBJECT_ID('silver.crm_cust_info', 'U') IS NOT NULL
     DROP TABLE silver.crm_cust_info;
 GO

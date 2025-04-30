@@ -40,6 +40,9 @@ Maintenance Notes:
 ===============================================================================
 */
 
+USE DataWarehouse;
+GO
+
 CREATE OR ALTER PROCEDURE bronze.usp_load_bronze AS
 BEGIN
     SET NOCOUNT ON;
