@@ -23,6 +23,9 @@ Notes:
 ===============================================================================
 */
 
+USE DataWarehouse;
+GO
+
 IF OBJECT_ID('dbo.error_log', 'U') IS NOT NULL
     DROP TABLE dbo.error_log;
 GO
