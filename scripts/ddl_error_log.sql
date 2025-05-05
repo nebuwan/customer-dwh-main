@@ -45,7 +45,7 @@ GO
 IF OBJECT_ID('dbo.quality_check_log', 'U') IS NOT NULL
     DROP TABLE dbo.quality_check_log; 
 BEGIN
-    CREATE TABLE audit.quality_check_log (
+    CREATE TABLE dbo.quality_check_log (
         check_name VARCHAR(255),
         check_description VARCHAR(500),
         check_result VARCHAR(10),
