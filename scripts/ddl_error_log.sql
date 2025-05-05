@@ -3,7 +3,7 @@
 DDL Script: Create Error Log Table
 ===============================================================================
 Script Purpose:
-    This script creates the 'error_log' table in the 'dbo' schema for capturing
+    This script creates the 'error_log' and 'quality_check_log' table in the 'dbo' schema for capturing
     errors encountered during ETL processes or stored procedure executions.
     
     The error log helps in tracking and troubleshooting issues by storing
@@ -40,4 +40,18 @@ CREATE TABLE dbo.error_log (
     error_message NVARCHAR(4000) NOT NULL,
     log_timestamp DATETIME DEFAULT GETDATE()
 );
+GO
+
+IF OBJECT_ID('dbo.quality_check_log', 'U') IS NOT NULL
+    DROP TABLE dbo.quality_check_log; 
+BEGIN
+    CREATE TABLE audit.quality_check_log (
+        check_name VARCHAR(255),
+        check_description VARCHAR(500),
+        check_result VARCHAR(10),
+        issue_count INT,
+        severity VARCHAR(10),
+        check_run_dt DATETIME DEFAULT GETDATE()
+    );
+END;
 GO
