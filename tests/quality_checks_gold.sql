@@ -2,6 +2,8 @@
 -- Stored Procedure: usp_run_gold_layer_quality_checks
 -- Purpose: Perform data quality checks on Gold Layer and log results
 -- ====================================================================
+USE CustomerDataWarehouse;
+GO
 
 CREATE OR ALTER PROCEDURE dbo.usp_run_gold_layer_quality_checks
 AS

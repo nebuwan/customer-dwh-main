@@ -3,11 +3,13 @@
 -- Purpose: Perform data quality checks on Silver Layer and log results
 -- ====================================================================
 
+USE CustomerDataWarehouse;
+GO
+
 CREATE OR ALTER PROCEDURE dbo.usp_run_silver_layer_quality_checks
 AS
 BEGIN
     SET NOCOUNT ON;
-
     -------------------------------
     -- CRM_CUST_INFO Primary Key Check
     -------------------------------
