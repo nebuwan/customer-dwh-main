@@ -15,8 +15,7 @@ This project is inspired by and builds upon the following learning materials:
 
 This implementation extends the original project by:
 
-- Adding stored procedure enhancements  
-- Implementing additional logging and audit tables  
+- Implementing error logging and data qaulity log tables  
 - Running the solution in a **SQL Server Linux** Docker container environment
 
 ---
