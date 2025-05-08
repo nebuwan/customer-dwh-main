@@ -1,9 +1,27 @@
-Learning Reources and Credit: https://www.datawithbaraa.com/sql-introduction/advanced-sql-project
+### 📚 Learning Resources & Credits
 
-Medium:https://medium.com/@rihab-feki/building-a-modern-data-warehouse-from-scratch-d18d346a7118
+This project is inspired by and builds upon the following learning materials:
 
-Source Repository: https://github.com/DataWithBaraa/sql-data-warehouse-project
+- **Advanced SQL Project by Data With Baraa**  
+  [SQL Introduction & Advanced Project](https://www.datawithbaraa.com/sql-introduction/advanced-sql-project)  
+  [Source Code Repository](https://github.com/DataWithBaraa/sql-data-warehouse-project)
 
-Using the source repo as project base with proc ehancements and additional logging tables. Also utilizing SQL Server Linux docker container.
- - https://www.docker.com/ 
- - https://learn.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-ver16
+- **Blog Post: Building a Modern Data Warehouse from Scratch**  
+  [Medium Article by Rihab Feki](https://medium.com/@rihab-feki/building-a-modern-data-warehouse-from-scratch-d18d346a7118)
+
+---
+
+### 🔧 Project Enhancements
+
+This implementation extends the original project by:
+
+- Adding stored procedure enhancements  
+- Implementing additional logging and audit tables  
+- Running the solution in a **SQL Server Linux** Docker container environment
+
+---
+
+### 🐳 Docker & SQL Server Setup
+
+- [Docker Official Website](https://www.docker.com/)  
+- [SQL Server on Linux with Docker - Microsoft Docs](https://learn.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-ver16)
