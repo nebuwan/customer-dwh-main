@@ -40,7 +40,7 @@ Maintenance Notes:
 ===============================================================================
 */
 
-USE DataWarehouse;
+USE CustomerDataWarehouse;
 GO
 
 CREATE OR ALTER PROCEDURE bronze.usp_load_bronze AS
