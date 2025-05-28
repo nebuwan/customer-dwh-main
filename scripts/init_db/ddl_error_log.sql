@@ -23,7 +23,7 @@ Notes:
 ===============================================================================
 */
 
-USE CustomerCustomerDataWarehouse;
+USE CustomerDataWarehouse;
 GO
 
 IF OBJECT_ID('dbo.error_log', 'U') IS NOT NULL
