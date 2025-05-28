@@ -42,6 +42,22 @@ CREATE TABLE dbo.error_log (
 );
 GO
 
+IF OBJECT_ID('dbo.load_log', 'U') IS NOT NULL
+    DROP TABLE dbo.error_log;
+GO
+CREATE TABLE dbo.load_log (
+    log_id            INT IDENTITY(1,1) PRIMARY KEY,
+    procedure_name    SYSNAME,
+    load_start_time   DATETIME,
+    load_end_time     DATETIME,
+    duration_seconds  INT,
+    status            NVARCHAR(20),
+    error_message     NVARCHAR(4000),
+    logged_at         DATETIME DEFAULT GETDATE()
+);
+GO
+
+
 IF OBJECT_ID('dbo.quality_check_log', 'U') IS NOT NULL
     DROP TABLE dbo.quality_check_log; 
 BEGIN
