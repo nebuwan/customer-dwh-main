@@ -1,6 +1,6 @@
 ### 📚 Learning Resources & Credits
 
-This project is inspired by and builds upon the following learning materials:
+This project repo is inspired by and builds upon the following learning materials:
 
 - **Advanced SQL Project by Data With Baraa**  
   [SQL Introduction & Advanced Project](https://www.datawithbaraa.com/sql-introduction/advanced-sql-project)  
