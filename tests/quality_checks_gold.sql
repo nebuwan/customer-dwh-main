@@ -1,6 +1,18 @@
--- ====================================================================
--- Stored Procedure: usp_run_gold_layer_quality_checks
--- Purpose: Perform data quality checks on Gold Layer and log results
+/*
+===============================================================================
+Quality Checks
+===============================================================================
+Script Purpose:
+    This script performs quality checks to validate the integrity, consistency, 
+    and accuracy of the Gold Layer. These checks ensure:
+    - Uniqueness of surrogate keys in dimension tables.
+    - Referential integrity between fact and dimension tables.
+    - Validation of relationships in the data model for analytical purposes.
+
+Usage Notes:
+    - Investigate and resolve any discrepancies found during the checks.
+    - Stored Procedure: usp_run_gold_layer_quality_checks
+    - Purpose: Perform data quality checks on Gold Layer and log results
 -- ====================================================================
 USE CustomerDataWarehouse;
 GO
