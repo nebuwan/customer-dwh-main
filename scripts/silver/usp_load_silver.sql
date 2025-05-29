@@ -20,7 +20,7 @@ Usage Example:
 USE CustomerDataWarehouse;
 GO
 
-CREATE OR ALTER PROCEDURE silver.load_silver AS
+CREATE OR ALTER PROCEDURE silver.usp_load_silver AS
 BEGIN
     SET NOCOUNT ON;
     BEGIN TRY
@@ -73,8 +73,8 @@ BEGIN
         )
         SELECT
             prd_id,
-            REPLACE(SUBSTRING(prd_key, 1, 5), '-', '_'),
-            SUBSTRING(prd_key, 7, LEN(prd_key)),
+            REPLACE(SUBSTRING(prd_key, 1, 5), '-', '_'), -- Extract category ID from prd_key (Derived into new column)
+            SUBSTRING(prd_key, 7, LEN(prd_key)), -- Extract product key from prd_key
             prd_nm,
             ISNULL(prd_cost, 0),
             CASE 
@@ -83,9 +83,9 @@ BEGIN
                 WHEN UPPER(TRIM(prd_line)) = 'S' THEN 'Other Sales'
                 WHEN UPPER(TRIM(prd_line)) = 'T' THEN 'Touring'
                 ELSE 'n/a'
-            END,
+            END, -- Map and normalize product line codes to descriptive names 
             CAST(prd_start_dt AS DATE),
-            CAST(LEAD(prd_start_dt) OVER (PARTITION BY prd_key ORDER BY prd_start_dt) - 1 AS DATE)
+            CAST(LEAD(prd_start_dt) OVER (PARTITION BY prd_key ORDER BY prd_start_dt) - 1 AS DATE) -- Use LEAD to get the end date as the start date of the next record minus one day
         FROM bronze.crm_prd_info;
 
         -- Load silver.crm_sales_details
