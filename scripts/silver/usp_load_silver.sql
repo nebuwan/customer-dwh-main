@@ -108,26 +108,26 @@ BEGIN
             CASE 
                 WHEN sls_order_dt = 0 OR LEN(sls_order_dt) != 8 THEN NULL
                 ELSE CAST(CAST(sls_order_dt AS VARCHAR) AS DATE)
-            END,
+            END AS sls_order_dt,
             CASE 
                 WHEN sls_ship_dt = 0 OR LEN(sls_ship_dt) != 8 THEN NULL
                 ELSE CAST(CAST(sls_ship_dt AS VARCHAR) AS DATE)
-            END,
+            END AS sls_ship_dt,
             CASE 
                 WHEN sls_due_dt = 0 OR LEN(sls_due_dt) != 8 THEN NULL
                 ELSE CAST(CAST(sls_due_dt AS VARCHAR) AS DATE)
-            END,
+            END AS sls_due_dt,
             CASE 
                 WHEN sls_sales IS NULL OR sls_sales <= 0 OR sls_sales != sls_quantity * ABS(sls_price) 
                     THEN sls_quantity * ABS(sls_price)
                 ELSE sls_sales
-            END,
+            END AS sls_sales, -- Recalculate sales if the original sales value is missing or incorrect 
             sls_quantity,
             CASE 
                 WHEN sls_price IS NULL OR sls_price <= 0 
                     THEN sls_sales / NULLIF(sls_quantity, 0)
                 ELSE sls_price
-            END
+            END AS sls_price -- Derive price if original value is missing
         FROM bronze.crm_sales_details;
 
         -- Load silver.erp_cust_az12
@@ -139,18 +139,18 @@ BEGIN
         )
         SELECT
             CASE
-                WHEN cid LIKE 'NAS%' THEN SUBSTRING(cid, 4, LEN(cid))
+                WHEN cid LIKE 'NAS%' THEN SUBSTRING(cid, 4, LEN(cid)) -- Remove 'NAS%' prefix if present 
                 ELSE cid
-            END,
+            END AS cid,
             CASE
                 WHEN bdate > GETDATE() THEN NULL
                 ELSE bdate
-            END,
+            END AS bdate, -- Set future birth dates to NULL
             CASE
                 WHEN UPPER(TRIM(gen)) IN ('F', 'FEMALE') THEN 'Female'
                 WHEN UPPER(TRIM(gen)) IN ('M', 'MALE') THEN 'Male'
                 ELSE 'n/a'
-            END
+            END AS gen -- Normalize gender values and handle unknown cases 
         FROM bronze.erp_cust_az12;
 
         -- Load silver.erp_loc_a101
@@ -166,7 +166,7 @@ BEGIN
                 WHEN TRIM(cntry) IN ('US', 'USA') THEN 'United States'
                 WHEN TRIM(cntry) = '' OR cntry IS NULL THEN 'n/a'
                 ELSE TRIM(cntry)
-            END
+            END AS cntry -- Normalize country codes and handle missing values
         FROM bronze.erp_loc_a101;
 
         -- Load silver.erp_px_cat_g1v2
